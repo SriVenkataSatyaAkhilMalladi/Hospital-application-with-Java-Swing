@@ -100,6 +100,11 @@ public class employ {
         this.cell_no = cell_no;
     }
     
+    @Override
+    public String toString(){
+        return name;
+    }
+    
            
   
 }

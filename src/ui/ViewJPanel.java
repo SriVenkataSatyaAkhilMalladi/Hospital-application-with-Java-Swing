@@ -4,7 +4,9 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import name.employ;
 
 //import name.employ;
 import name.employlist;
@@ -235,6 +237,18 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
         // TODO add your handling code here:
+        int SelectedRowIndex = tbemployees.getSelectedRow();
+        
+        if (SelectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a employ to delete their details");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
+        model.getValueAt(SelectedRowIndex, 0);
+        
+        employeelist.deleteemployee(SelectedRowIndex);
+        JOptionPane.showMessageDialog(this, "Employee details havebeen deleted");
+        
     }//GEN-LAST:event_btDeleteActionPerformed
 
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
@@ -275,6 +289,25 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void displaytable() {
         DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
+        model.setRowCount(0);
+        
+        for (employ em : employeelist.getEmployeelist()){ 
+            Object[] row = new Object[10];
+            //row[0] = em.getName();
+            row[0] = em;
+            row[1] = em.getEmployeeid();
+            row[2] = em.getAge();
+            row[3] = em.getGender();
+            row[4] = em.getStart_date();
+            row[5] = em.getLevel();
+            row[6] = em.getTeam_into();
+            row[7] = em.getPos_title();
+            row[8] = em.getCell_no();
+            row[9] = em.getEmail_id();
+            
+            model.addRow(row);
+            
+        }
         
     //    txtName.setText(employeelist.getName());
     //   txtEmail.setText(employeelist.getEmail_id());
