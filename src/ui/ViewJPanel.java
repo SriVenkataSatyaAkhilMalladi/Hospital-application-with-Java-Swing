@@ -62,6 +62,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtStartDate = new javax.swing.JTextField();
         txtTeamInfo = new javax.swing.JTextField();
         btUpdate = new javax.swing.JButton();
+        lblPositionTitle = new javax.swing.JLabel();
+        txtPositionTitle = new javax.swing.JTextField();
 
         jTitle.setText("View Employee Details");
 
@@ -123,6 +125,13 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
 
         btUpdate.setText("Update");
+        btUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpdateActionPerformed(evt);
+            }
+        });
+
+        lblPositionTitle.setText("Position Title");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -132,7 +141,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(btView)
-                .addGap(162, 162, 162)
+                .addGap(160, 160, 160)
                 .addComponent(btUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btDelete)
@@ -167,24 +176,31 @@ public class ViewJPanel extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCellNo)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCellNo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblGender)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtGender))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblLevel)
-                                    .addComponent(lblEmail))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmail)
-                                    .addComponent(txtLevel))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCellNo)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtCellNo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblGender)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtGender))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblLevel)
+                                            .addComponent(lblEmail))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtEmail)
+                                            .addComponent(txtLevel)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(lblPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPositionTitle)))))
                 .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
@@ -226,13 +242,38 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTeamInfo)
-                    .addComponent(txtTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPositionTitle)
+                    .addComponent(txtPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewActionPerformed
         // TODO add your handling code here:
+        int SelectedRowIndex = tbemployees.getSelectedRow();
+        
+        if (SelectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a employ to delete their details");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
+        employ selectedemployee = (employ) model.getValueAt(SelectedRowIndex, 0);
+        
+       // txtName.setName(selectedemployee.getName());
+        txtName.setText(selectedemployee.getName());
+        txtEmail.setText(selectedemployee.getEmail_id());
+        txtGender.setText(selectedemployee.getGender());        
+        txtPositionTitle.setText(selectedemployee.getPos_title());
+        txtTeamInfo.setText(selectedemployee.getTeam_into());
+        txtStartDate.setText(selectedemployee.getStart_date());
+        txtAge.setText(String.valueOf(selectedemployee.getAge()));
+        txtCellNo.setText(String.valueOf(selectedemployee.getCell_no()));
+        txtLevel.setText(String.valueOf(selectedemployee.getLevel()));
+        txtEmployeeid.setText(String.valueOf((char) selectedemployee.getEmployeeid()));
+        //txtEmail.setEmail(selectedemployee.getEmail_id());
+        //txtAge.setAge(String.valueOf(selectedemployee.getAge()));
+        
     }//GEN-LAST:event_btViewActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
@@ -244,7 +285,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
-        model.getValueAt(SelectedRowIndex, 0);
+        employ selectedemployee = (employ) model.getValueAt(SelectedRowIndex, 0);
         
         employeelist.deleteemployee(SelectedRowIndex);
         JOptionPane.showMessageDialog(this, "Employee details havebeen deleted");
@@ -259,6 +300,10 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCellNoActionPerformed
 
+    private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDelete;
@@ -272,6 +317,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblLevel;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPositionTitle;
     private javax.swing.JLabel lblStartDate;
     private javax.swing.JLabel lblTeamInfo;
     private javax.swing.JLabel lblemployeeid;
@@ -283,6 +329,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtLevel;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPositionTitle;
     private javax.swing.JTextField txtStartDate;
     private javax.swing.JTextField txtTeamInfo;
     // End of variables declaration//GEN-END:variables
