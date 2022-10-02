@@ -276,16 +276,16 @@ public class ViewJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void displayemployee() {
-        txtName.setText(employeelist.getName());
-        txtEmail.setText(employeelist.getEmail_id());
-        txtGender.setText(employeelist.getGender());
-        txtPositionTitle.setText(employeelist.getPos_title());
-        txtTeamInfo.setText(employee.getTeam_into());
-        txtStartDate.setText(employee.getStart_date());
-        txtAge.setText(Integer.toString(employee.getAge()));
-        txtCellNo.setText(Long.toString(employee.getCell_no()));
-        txtLevel.setText(Integer.toString(employee.getLevel()));
-        txtEmployeeid.setText(Integer.toString(employee.getEmployeeid()));
+    //    txtName.setText(employeelist.getName());
+    //   txtEmail.setText(employeelist.getEmail_id());
+    //    txtGender.setText(employeelist.getGender());
+    //    txtPositionTitle.setText(employeelist.getPos_title());
+    //    txtTeamInfo.setText(employee.getTeam_into());
+    //   txtStartDate.setText(employee.getStart_date());
+    //    txtAge.setText(Integer.toString(employee.getAge()));
+    //    txtCellNo.setText(Long.toString(employee.getCell_no()));
+    //    txtLevel.setText(Integer.toString(employee.getLevel()));
+    //    txtEmployeeid.setText(Integer.toString(employee.getEmployeeid()));
  
         
     }

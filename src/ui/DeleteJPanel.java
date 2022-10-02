@@ -4,7 +4,8 @@
  */
 package ui;
 
-import name.employ;
+//import name.employ;
+import name.employlist;
 
 /**
  *
@@ -15,10 +16,11 @@ public class DeleteJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DeleteJPanel
      */
-    employ employee;
-    public DeleteJPanel(employ employee) {
+    //employ employee;
+    employlist employeelist;
+    public DeleteJPanel(employlist employeelist) {
         initComponents();
-        this.employee = employee;
+        this.employeelist = employeelist;
     }
 
     /**

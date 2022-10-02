@@ -5,6 +5,7 @@
 package ui;
 
 import javax.swing.JOptionPane;
+import name.employ;
 import name.employlist;
 
 /**
@@ -246,18 +247,55 @@ public class AddJPanel extends javax.swing.JPanel {
 
     private void BSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSaveActionPerformed
         // TODO add your handling code here:
-        employeelist.setName(txtName.getText());
-        employeelist.setEmail_id(txtEmail.getText());
-        employeelist.setGender(txtGender.getText());
-        employeelist.setPos_title(txtPositionTitle.getText());
-        employeelist.setTeam_into(txtTeamInfo.getText());
-        employeelist.setStart_date(txtStartDate.getText());
-        employeelist.setAge(Integer.parseInt(txtAge.getText()));
-        employeelist.setCell_no((int) Long.parseLong(txtCellNo.getText()));
-        employeelist.setLevel(Integer.parseInt(txtLevel.getText()));
-        employeelist.setEmployeeid(Integer.parseInt(txtEmployeeid.getText()));
+            String name = txtName.getText();
+            int employeeid = Integer.parseInt(txtEmployeeid.getText());
+            int age = Integer.parseInt(txtAge.getText());
+            String gender = txtGender.getText();
+            String start_date = txtStartDate.getText();
+            int level = Integer.parseInt(txtLevel.getText());
+            String team_into = txtTeamInfo.getText();
+            String pos_title = txtPositionTitle.getText();
+            String email_id = txtEmail.getText();
+            long cell_no = (int)Long.parseLong(txtCellNo.getText());
+            
+            employ em = employeelist.addnewemploy();
+            
+            em.setName(name);
+            em.setCell_no((int) cell_no);
+            em.setEmail_id(email_id);
+            em.setEmployeeid(employeeid);
+            em.setGender(gender);
+            em.setLevel(level);
+            em.setPos_title(pos_title);
+            em.setStart_date(start_date);
+            em.setTeam_into(team_into);
+            em.setAge(age);
+            
+            JOptionPane.showMessageDialog(this,"New employ details added");
+            
+            txtName.setText("");
+            txtEmail.setText("");
+            txtGender.setText("");        
+            txtPositionTitle.setText("");
+            txtTeamInfo.setText("");
+            txtStartDate.setText("");
+            txtAge.setText("");
+            txtCellNo.setText("");
+            txtLevel.setText("");
+            txtEmployeeid.setText("");
+                    
+       // employlist.setName(txtName.getText());
+       // employlist.setEmail_id(txtEmail.getText());
+       // employlist.setGender(txtGender.getText());
+       // employlist.setPos_title(txtPositionTitle.getText());
+       // employlist.setTeam_into(txtTeamInfo.getText());
+       // employlist.setStart_date(txtStartDate.getText());
+       // employlist.setAge(Integer.parseInt(txtAge.getText()));
+       // employlist.setCell_no((int) Long.parseLong(txtCellNo.getText()));
+       // employlist.setLevel(Integer.parseInt(txtLevel.getText()));
+       // employlist.setEmployeeid(Integer.parseInt(txtEmployeeid.getText()));
         
-        JOptionPane.showMessageDialog(this, "Employee Info saved");
+        //JOptionPane.showMessageDialog(this, "Employee Info saved");
         
     }//GEN-LAST:event_BSaveActionPerformed
 

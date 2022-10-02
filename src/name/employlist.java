@@ -25,6 +25,12 @@ public class employlist {
     public void setEmployeelist(ArrayList<employ> employeelist) {
         this.employeelist = employeelist;
     }
+    
+    public employ addnewemploy(){
+        employ newemploy = new employ();
+        employeelist.add(newemploy);
+        return newemploy; 
+    }
 
     public void setName(String text) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

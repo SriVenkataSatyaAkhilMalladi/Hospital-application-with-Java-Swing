@@ -4,7 +4,8 @@
  */
 package ui;
 
-import name.employ;
+//import name.employ;
+import name.employlist;
 
 /**
  *
@@ -15,10 +16,11 @@ public class UpdateJPanel extends javax.swing.JPanel {
     /**
      * Creates new form UpdateJPanel
      */
-    employ employee;
-    public UpdateJPanel(employ employee) {
+    //employ employee;
+    employlist employeelist;
+    public UpdateJPanel(employlist employeelist) {
         initComponents();
-        this.employee = employee;
+        this.employeelist = employeelist;
     }
 
     /**
