@@ -38,8 +38,6 @@ public class MainFrame extends javax.swing.JFrame {
         ControlPanel = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
         View = new javax.swing.JButton();
-        Update = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
         InfoPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,46 +56,26 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        Update.setText("Update");
-        Update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateActionPerformed(evt);
-            }
-        });
-
-        Delete.setText("Delete");
-        Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout ControlPanelLayout = new javax.swing.GroupLayout(ControlPanel);
         ControlPanel.setLayout(ControlPanelLayout);
         ControlPanelLayout.setHorizontalGroup(
             ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(View, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Delete))
-                    .addComponent(Update))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(Add)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(ControlPanelLayout.createSequentialGroup()
+                .addComponent(View)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         ControlPanelLayout.setVerticalGroup(
             ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlPanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(100, 100, 100)
                 .addComponent(Add)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addComponent(View)
-                .addGap(41, 41, 41)
-                .addComponent(Update)
-                .addGap(45, 45, 45)
-                .addComponent(Delete)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGap(149, 149, 149))
         );
 
         jSplitPane1.setLeftComponent(ControlPanel);
@@ -119,11 +97,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -141,18 +119,6 @@ public class MainFrame extends javax.swing.JFrame {
         ViewJPanel viewpanel = new ViewJPanel(employeelist);
         jSplitPane1.setRightComponent(viewpanel);
     }//GEN-LAST:event_ViewActionPerformed
-
-    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        // TODO add your handling code here:
-        UpdateJPanel updatepanel = new UpdateJPanel(employeelist);
-        jSplitPane1.setRightComponent(updatepanel);
-    }//GEN-LAST:event_UpdateActionPerformed
-
-    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        // TODO add your handling code here:
-        DeleteJPanel deletepanel = new DeleteJPanel(employeelist);
-        jSplitPane1.setRightComponent(deletepanel);
-    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,9 +158,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JPanel ControlPanel;
-    private javax.swing.JButton Delete;
     private javax.swing.JPanel InfoPanel;
-    private javax.swing.JButton Update;
     private javax.swing.JButton View;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
