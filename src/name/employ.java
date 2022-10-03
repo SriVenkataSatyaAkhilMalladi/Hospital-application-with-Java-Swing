@@ -96,7 +96,7 @@ public class employ {
         return cell_no;
     }
 
-    public void setCell_no(int cell_no) {
+    public void setCell_no(long cell_no) {
         this.cell_no = cell_no;
     }
     

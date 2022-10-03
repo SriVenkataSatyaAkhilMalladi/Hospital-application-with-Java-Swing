@@ -254,12 +254,13 @@ public class AddJPanel extends javax.swing.JPanel {
             String team_into = txtTeamInfo.getText();
             String pos_title = txtPositionTitle.getText();
             String email_id = txtEmail.getText();
-            long cell_no = (int)Long.parseLong(txtCellNo.getText());
+            long cell_no = Long.parseLong(txtCellNo.getText());
+            //long cell_no = (Long.parseLong(txtCellNo.getText());
             
             employ em = employeelist.addnewemploy();
             
             em.setName(name);
-            em.setCell_no((int) cell_no);
+            em.setCell_no(cell_no);
             em.setEmail_id(email_id);
             em.setEmployeeid(employeeid);
             em.setGender(gender);

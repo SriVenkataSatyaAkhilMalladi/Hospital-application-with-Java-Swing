@@ -65,7 +65,7 @@
                           <Group type="102" attributes="0">
                               <Component id="lblCellNo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtCellNo" pref="210" max="32767" attributes="0"/>
+                              <Component id="txtCellNo" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblGender" min="-2" max="-2" attributes="0"/>
@@ -97,7 +97,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
               <Component id="jTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="83" max="32767" attributes="0"/>
               <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtSearch" min="-2" pref="131" max="-2" attributes="0"/>
@@ -337,14 +337,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtTeamInfo">
     </Component>
-    <Component class="javax.swing.JButton" name="btUpdate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUpdateActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblPositionTitle">
       <Properties>
         <Property name="text" type="java.lang.String" value="Position Title"/>
@@ -362,6 +354,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Search:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btUpdate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUpdateActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
