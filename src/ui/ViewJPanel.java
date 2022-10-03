@@ -346,7 +346,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
         switch (tbemployees.getSelectedRowCount()) {
             case 0:
-                JOptionPane.showMessageDialog(this, "The table is empty");
+                JOptionPane.showMessageDialog(this, "Either row unseleted or table is empty.");
                 break;
             case 1:
                 employ selectedemployee = (employ) model.getValueAt(tbemployees.getSelectedRow(), 0);
@@ -372,9 +372,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                 model.setValueAt(cell_no, tbemployees.getSelectedRow(), 9);
                 JOptionPane.showMessageDialog(this, "Employee details Updated");
                 break;
-            default:
-                JOptionPane.showMessageDialog(this, "Select a row Update");
-                break;
+           // default:
+             //   JOptionPane.showMessageDialog(this, "Select a row Update");
+               // break;
         }
         
         
