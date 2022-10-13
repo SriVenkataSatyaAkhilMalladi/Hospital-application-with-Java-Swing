@@ -1,1 +1,23 @@
 # Malladi_SriVenkataSatyaAkhil_2766590
+
+
+
+The employee profile will have following fields : 
+• Name 
+• Employee ID 
+• Age 
+• Gender 
+• Start date 
+• Level 
+• Team info 
+• Position title 
+• Contact Info 
+o Cell phone number 
+o email address 
+• Photo 
+ 
+Application will allow user to do 
+• Create, Read, Update, Delete employee profile 
+• Search employee profile from employee directory based on different search 
+option(Name, ID, and others fields) 
+• Display the photo when reading employee profile 
