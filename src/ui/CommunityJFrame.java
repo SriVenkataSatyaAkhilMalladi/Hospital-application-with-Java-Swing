@@ -4,6 +4,13 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.Person;
+import model.PersonList;
+
 /**
  *
  * @author srivenkatasatyaakhilmalladi
@@ -13,8 +20,19 @@ public class CommunityJFrame extends javax.swing.JFrame {
     /**
      * Creates new form CommunityJFrame
      */
+    PersonList list0;
+    
     public CommunityJFrame() {
         initComponents();
+        list0 = new PersonList();
+        populateTable0();
+    }
+    
+    public CommunityJFrame(PersonList list0){
+        initComponents();
+        this.list0 = list0;
+        populateTable0();
+         
     }
 
     /**
@@ -26,6 +44,7 @@ public class CommunityJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         CityTF = new javax.swing.JTextField();
         PhoneNbrTF = new javax.swing.JTextField();
         PersonNameLbl = new javax.swing.JLabel();
@@ -132,6 +151,11 @@ public class CommunityJFrame extends javax.swing.JFrame {
         lblSearch2.setText("Search:");
 
         AddBtn.setText("Add");
+        AddBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddBtnActionPerformed(evt);
+            }
+        });
 
         HospitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,6 +183,11 @@ public class CommunityJFrame extends javax.swing.JFrame {
         });
 
         Cancel.setText("Cancel");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
 
         CityTF1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,8 +212,18 @@ public class CommunityJFrame extends javax.swing.JFrame {
         CommunityIDLbl.setText("CommunityID");
 
         UpdateBtn.setText("Update");
+        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateBtnActionPerformed(evt);
+            }
+        });
 
         ViewBtn.setText("View");
+        ViewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewBtnActionPerformed(evt);
+            }
+        });
 
         UpdateBtn1.setText("Update");
 
@@ -365,17 +404,17 @@ public class CommunityJFrame extends javax.swing.JFrame {
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
+        DefaultTableModel model = (DefaultTableModel) PersonTable.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tbemployees.setRowSorter(tr);
+        PersonTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tbemployees.getModel();
+        DefaultTableModel model = (DefaultTableModel) PersonTable.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tbemployees.setRowSorter(tr);
+        PersonTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));
     }//GEN-LAST:event_txtSearchKeyReleased
 
@@ -402,6 +441,43 @@ public class CommunityJFrame extends javax.swing.JFrame {
     private void CommunityIDTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommunityIDTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CommunityIDTFActionPerformed
+
+    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateBtnActionPerformed
+
+    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
+        // TODO add your handling code here:
+        String PersonName = PersonNameTF.getText();
+        int PatientId = Integer.parseInt(PatientIDTF.getText());
+        int CommunityID = Integer.parseInt(CommunityIDTF1.getText());
+        Long PhoneNbr  = Long.valueOf(PhoneNbrTF.getText());
+        String City = CityTF.getText();   
+        
+        Person p = list0.addPerson();
+        p.setPersonName(PersonName);
+        p.setPatientId(PatientId);
+        p.setCommunityID(CommunityID);
+        p.setCity(City);
+        p.setPhoneNbr(PhoneNbr);
+        
+        JOptionPane.showMessageDialog(this,"New Person has been added");
+        PersonNameTF.setText("");
+        PatientIDTF.setText("");
+        CommunityIDTF1.setText("");
+        PhoneNbrTF.setText("");
+        CityTF.setText("");
+        
+    }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ViewBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,9 +546,27 @@ public class CommunityJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField ZipCodeTF;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblSearch1;
     private javax.swing.JLabel lblSearch2;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearch1;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable0() {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       DefaultTableModel model0 = (DefaultTableModel) PersonTable.getModel();
+       model0.setRowCount(0);
+       
+       for (Person p : list0.getList0()){
+           Object[] row0 =  new Object[5];
+           row0[0] = p.getPersonName();
+           row0[1] = p.getPatientId();
+           row0[2] = p.getCommunityID();
+           row0[3] = p.getPhoneNbr();
+           row0[4] = p.getCity();
+           
+           model0.addRow(row0);
+       }
+    }
 }
