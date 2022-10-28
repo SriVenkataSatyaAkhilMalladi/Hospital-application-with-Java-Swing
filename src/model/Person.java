@@ -9,50 +9,70 @@ package model;
  * @author srivenkatasatyaakhilmalladi
  */
 public class Person {
-    private String PersonName;
-    private int PatientId;
-    private int CommunityID;
-    private Long PhoneNbr;
-    private String City;   
+    
+    String name;
+    int age;
+    String gender;
+    String role;
+    String address;
+    String community;
+    long contact;
 
-    public String getPersonName() {
-        return PersonName;
+    public long getContact() {
+        return contact;
     }
 
-    public void setPersonName(String PersonName) {
-        this.PersonName = PersonName;
+    public void setContact(long contact) {
+        this.contact = contact;
     }
 
-    public int getPatientId() {
-        return PatientId;
+    public String getName() {
+        return name;
     }
 
-    public void setPatientId(int PatientId) {
-        this.PatientId = PatientId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getCommunityID() {
-        return CommunityID;
+    public int getAge() {
+        return age;
     }
 
-    public void setCommunityID(int CommunityID) {
-        this.CommunityID = CommunityID;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public Long getPhoneNbr() {
-        return PhoneNbr;
+    public String getGender() {
+        return gender;
     }
 
-    public void setPhoneNbr(Long PhoneNbr) {
-        this.PhoneNbr = PhoneNbr;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getCity() {
-        return City;
+    public String getRole() {
+        return role;
     }
 
-    public void setCity(String City) {
-        this.City = City;
+    public void setRole(String role) {
+        this.role = role;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(String community) {
+        this.community = community;
+    }
+    
     
 }

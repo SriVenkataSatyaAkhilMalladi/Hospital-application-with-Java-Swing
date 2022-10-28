@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 import java.util.ArrayList;
 
 /**
@@ -11,23 +10,24 @@ import java.util.ArrayList;
  * @author srivenkatasatyaakhilmalladi
  */
 public class PersonList {
-    private ArrayList<Person> list0;
+
+    private ArrayList<Person> Personlist;
     
-    public PersonList()
-    {
-    this.list0 = new ArrayList<Person>();
-    } 
-
-    public ArrayList<Person> getList0() {
-        return list0;
+    public PersonList(){
+        this.Personlist= new ArrayList<Person>();
     }
 
-    public void setList0(ArrayList<Person> list0) {
-        this.list0 = list0;
+    public ArrayList<Person> getHistory() {
+        return Personlist;
     }
-    public Person addPerson(){
-        Person  newPerson = new Person();
-        list0.add(newPerson);
-        return newPerson;
+
+    public void setHistory(ArrayList<Person> Personlist) {
+        this.Personlist = Personlist;
+    }
+    
+    public Person addNewPerson(){
+        Person addperson = new Person();
+        Personlist.add(addperson);
+        return addperson;
     }
 }
