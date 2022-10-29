@@ -45,25 +45,25 @@ public class CommunityJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        CommWelcomeLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        CommWelcomeLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         CommWelcomeLabel.setForeground(new java.awt.Color(0, 51, 204));
-        CommWelcomeLabel.setText("Welcome to the Community!!!");
+        CommWelcomeLabel.setText("      Welcome to the Community!!!");
 
         javax.swing.GroupLayout CommRightPanelLayout = new javax.swing.GroupLayout(CommRightPanel);
         CommRightPanel.setLayout(CommRightPanelLayout);
         CommRightPanelLayout.setHorizontalGroup(
             CommRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommRightPanelLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(CommWelcomeLabel)
-                .addGap(17, 17, 17))
+                .addContainerGap(195, Short.MAX_VALUE)
+                .addComponent(CommWelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180))
         );
         CommRightPanelLayout.setVerticalGroup(
             CommRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CommRightPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(CommWelcomeLabel)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(CommWelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(479, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(CommRightPanel);
@@ -120,17 +120,17 @@ public class CommunityJFrame extends javax.swing.JFrame {
         CommLeftPanelLayout.setVerticalGroup(
             CommLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CommLeftPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(106, 106, 106)
                 .addComponent(CHomeButton)
-                .addGap(39, 39, 39)
+                .addGap(52, 52, 52)
                 .addComponent(AddCommButton)
-                .addGap(12, 12, 12)
+                .addGap(50, 50, 50)
                 .addComponent(ViewCommButton)
-                .addGap(12, 12, 12)
+                .addGap(53, 53, 53)
                 .addComponent(CAddPersonButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(48, 48, 48)
                 .addComponent(CviewPersonButton)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(CommLeftPanel);

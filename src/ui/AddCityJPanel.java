@@ -42,6 +42,9 @@ public class AddCityJPanel extends javax.swing.JPanel {
         CityStateLabel = new javax.swing.JLabel();
         CityStateTextField = new javax.swing.JTextField();
         CitySubmitButton = new javax.swing.JButton();
+        AddCityLbl = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 204, 204));
 
         CityNameLabel.setText("Name");
 
@@ -53,6 +56,7 @@ public class AddCityJPanel extends javax.swing.JPanel {
         CityStateTextField.setForeground(new java.awt.Color(204, 204, 204));
         CityStateTextField.setText("Enter State Name");
 
+        CitySubmitButton.setBackground(new java.awt.Color(0, 255, 255));
         CitySubmitButton.setText("Submit");
         CitySubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,26 +64,38 @@ public class AddCityJPanel extends javax.swing.JPanel {
             }
         });
 
+        AddCityLbl.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        AddCityLbl.setForeground(new java.awt.Color(0, 0, 204));
+        AddCityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AddCityLbl.setText("Add City");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CityNameLabel)
-                    .addComponent(CityStateLabel))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CitySubmitButton)
-                    .addComponent(CityStateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(170, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CityNameLabel)
+                            .addComponent(CityStateLabel))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CitySubmitButton)
+                            .addComponent(CityStateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(AddCityLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addContainerGap()
+                .addComponent(AddCityLbl)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CityNameLabel)
                     .addComponent(CityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -87,9 +103,9 @@ public class AddCityJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CityStateLabel)
                     .addComponent(CityStateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(CitySubmitButton)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -110,6 +126,7 @@ public class AddCityJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AddCityLbl;
     private javax.swing.JLabel CityNameLabel;
     private javax.swing.JTextField CityNameTextField;
     private javax.swing.JLabel CityStateLabel;

@@ -44,8 +44,12 @@ public class AddCommunityJPanel extends javax.swing.JPanel {
         CommNameTextField = new javax.swing.JTextField();
         CommPincodeLabel = new javax.swing.JLabel();
         CommNameLabel = new javax.swing.JLabel();
+        AddCommunityLbl = new javax.swing.JLabel();
 
-        CommAddButton.setText("Add");
+        setBackground(new java.awt.Color(0, 204, 204));
+
+        CommAddButton.setBackground(new java.awt.Color(0, 255, 255));
+        CommAddButton.setText("ADD");
         CommAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CommAddButtonActionPerformed(evt);
@@ -78,26 +82,38 @@ public class AddCommunityJPanel extends javax.swing.JPanel {
 
         CommNameLabel.setText("Community Name");
 
+        AddCommunityLbl.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        AddCommunityLbl.setForeground(new java.awt.Color(0, 0, 204));
+        AddCommunityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AddCommunityLbl.setText("Add Community");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CommNameLabel)
-                    .addComponent(CommPincodeLabel))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CommAddButton)
-                    .addComponent(CommPincodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CommNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(281, 281, 281)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CommNameLabel)
+                            .addComponent(CommPincodeLabel))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CommPincodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CommNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CommAddButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(AddCommunityLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addContainerGap()
+                .addComponent(AddCommunityLbl)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CommNameLabel)
                     .addComponent(CommNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -105,9 +121,9 @@ public class AddCommunityJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CommPincodeLabel)
                     .addComponent(CommPincodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CommAddButton)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(CommAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(305, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,6 +182,7 @@ public class AddCommunityJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AddCommunityLbl;
     private javax.swing.JButton CommAddButton;
     private javax.swing.JLabel CommNameLabel;
     private javax.swing.JTextField CommNameTextField;
