@@ -4,6 +4,18 @@
  */
 package ui;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import java.util.List;
+import javax.swing.ButtonGroup;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import model.Community;
+import model.PersonList;
+import model.Person;
+
 /**
  *
  * @author srivenkatasatyaakhilmalladi
@@ -13,9 +25,226 @@ public class AddPersonJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddPersonJPanel
      */
-    public AddPersonJPanel() {
+    PersonList Personlist;
+    
+    public AddPersonJPanel(PersonList Personlist) {
         initComponents();
+        this.Personlist=Personlist;
     }
+    private void initComponents() {
+
+        ButtonGroup CGenderButtonGroup = new javax.swing.ButtonGroup();
+        ButtonGroup CRoleButtonGroup = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        CPersonNameLabel = new javax.swing.JLabel();
+        CPersonRoleLabel = new javax.swing.JLabel();
+        CPersonAgeLabel = new javax.swing.JLabel();
+        CFemaleRadioButton = new javax.swing.JRadioButton();
+        CPersonGenderLabel = new javax.swing.JLabel();
+        CPersonCommunityLabel = new javax.swing.JLabel();
+        CPersonAddressLabel = new javax.swing.JLabel();
+        CMaleRadioButton = new javax.swing.JRadioButton();
+        CDoctorRoleButton = new javax.swing.JRadioButton();
+        CPatientRoleButton = new javax.swing.JRadioButton();
+        COtherRadioButton = new javax.swing.JRadioButton();
+        CPersonContactLabel = new javax.swing.JLabel();
+        CPersonContactTextField = new javax.swing.JTextField();
+        CPersonAddressTextField = new javax.swing.JTextField();
+        CPersonNameTextField = new javax.swing.JTextField();
+        CPersonAgeTextField = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        AddPersonButton = new javax.swing.JButton();
+
+        CPersonNameLabel.setText("Name");
+
+        CPersonRoleLabel.setText("Select Role");
+
+        CPersonAgeLabel.setText("Age");
+
+        CGenderButtonGroup.add(CFemaleRadioButton);
+        CFemaleRadioButton.setText("Female");
+
+        CPersonGenderLabel.setText("Gender");
+
+        CPersonCommunityLabel.setText("Community");
+
+        CPersonAddressLabel.setText("Address");
+
+        CGenderButtonGroup.add(CMaleRadioButton);
+        CMaleRadioButton.setText("Male");
+
+        CRoleButtonGroup.add(CDoctorRoleButton);
+        CDoctorRoleButton.setText("Doctor");
+
+        CRoleButtonGroup.add(CPatientRoleButton);
+        CPatientRoleButton.setText("Patient");
+
+        CGenderButtonGroup.add(COtherRadioButton);
+        COtherRadioButton.setText("Other");
+
+        CPersonContactLabel.setText("Contact No");
+
+        CPersonContactTextField.setForeground(new java.awt.Color(204, 204, 204));
+        CPersonContactTextField.setText("Enter Contact Number");
+        CPersonContactTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CPersonContactTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CPersonContactTextFieldFocusLost(evt);
+            }
+        });
+
+        CPersonAddressTextField.setForeground(new java.awt.Color(204, 204, 204));
+        CPersonAddressTextField.setText("Enter Address");
+        CPersonAddressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CPersonAddressTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CPersonAddressTextFieldFocusLost(evt);
+            }
+        });
+
+        CPersonNameTextField.setForeground(new java.awt.Color(204, 204, 204));
+        CPersonNameTextField.setText("Enter Name");
+        CPersonNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CPersonNameTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CPersonNameTextFieldFocusLost(evt);
+            }
+        });
+
+        CPersonAgeTextField.setForeground(new java.awt.Color(204, 204, 204));
+        CPersonAgeTextField.setText("Enter Age");
+        CPersonAgeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CPersonAgeTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CPersonAgeTextFieldFocusLost(evt);
+            }
+        });
+
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        AddPersonButton.setText("Add");
+        AddPersonButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPersonButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(CPersonContactLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(CPersonContactTextField))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CPersonNameLabel)
+                            .addComponent(CPersonAgeLabel))
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CPersonNameTextField)
+                            .addComponent(CPersonAgeTextField)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CPersonCommunityLabel)
+                            .addComponent(CPersonAddressLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CPersonAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CPersonRoleLabel)
+                            .addComponent(CPersonGenderLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(CMaleRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(CFemaleRadioButton)
+                                .addGap(14, 14, 14)
+                                .addComponent(COtherRadioButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(CDoctorRoleButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CPatientRoleButton)))))
+                .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AddPersonButton)
+                .addGap(71, 71, 71))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonNameLabel)
+                    .addComponent(CPersonNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonAgeLabel)
+                    .addComponent(CPersonAgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonGenderLabel)
+                    .addComponent(CMaleRadioButton)
+                    .addComponent(CFemaleRadioButton)
+                    .addComponent(COtherRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonRoleLabel)
+                    .addComponent(CDoctorRoleButton)
+                    .addComponent(CPatientRoleButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonAddressLabel)
+                    .addComponent(CPersonAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonCommunityLabel)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CPersonContactLabel)
+                    .addComponent(CPersonContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(AddPersonButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,7 +578,7 @@ public class AddPersonJPanel extends javax.swing.JPanel {
 
             role = "Patient";
         }
-        Person p = persondir.addNewPerson();
+        Person p = Personlist.addNewPerson();
         p.setName(name);
         p.setAge(age);
         p.setContact(contact);

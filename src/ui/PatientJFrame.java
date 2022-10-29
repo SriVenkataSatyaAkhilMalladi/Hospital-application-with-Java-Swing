@@ -4,17 +4,30 @@
  */
 package ui;
 
+import model.City;
+import model.Person;
+import model.PersonHistory;
+
 /**
  *
- * @author srivenkatasatyaakhilmalladi
+ * @author rithvik
  */
 public class PatientJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form PatientJFrame
      */
+    
+    PersonHistory phistory;
     public PatientJFrame() {
         initComponents();
+        
+
+    }
+    public PatientJFrame(PersonHistory history) {
+        initComponents();
+        loadComboBoxData();
+        this.phistory = new PersonHistory();
     }
 
     /**
@@ -26,22 +39,615 @@ public class PatientJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        genderGroup = new javax.swing.ButtonGroup();
+        txtAddress = new javax.swing.JTextField();
+        lblAddress = new javax.swing.JLabel();
+        lblName1 = new javax.swing.JLabel();
+        lblPatientID = new javax.swing.JLabel();
+        lblBloodPressure = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtTemperature = new javax.swing.JTextField();
+        btnMale = new javax.swing.JRadioButton();
+        txtBloodPressure = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        lblTemperature = new javax.swing.JLabel();
+        btnOther = new javax.swing.JRadioButton();
+        lblWeight = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        txtSugarLevel = new javax.swing.JTextField();
+        searchType = new javax.swing.JComboBox<>();
+        txtWeight = new javax.swing.JTextField();
+        txtSearchValue = new javax.swing.JTextField();
+        lblAge = new javax.swing.JLabel();
+        lblSugarLevel = new javax.swing.JLabel();
+        lblCommunity = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        lblCity = new javax.swing.JLabel();
+        lblGender = new javax.swing.JLabel();
+        lblPhoneNumber = new javax.swing.JLabel();
+        lblHeading = new javax.swing.JLabel();
+        searchBtn = new javax.swing.JButton();
+        btnFemale = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmployee = new javax.swing.JTable();
+        txtPatientID = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        txtPhoneNumber = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        lblCity1 = new javax.swing.JLabel();
+        comboCommunity = new javax.swing.JComboBox<>();
+        comboCity = new javax.swing.JComboBox<>();
+        comboHospital = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 255, 255));
+
+        txtAddress.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAddressKeyReleased(evt);
+            }
+        });
+
+        lblAddress.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblAddress.setText("Address :");
+
+        lblName1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        lblName1.setText("Vital Signs");
+
+        lblPatientID.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblPatientID.setText("Patient ID :");
+
+        lblBloodPressure.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblBloodPressure.setText("Blood Pressure :");
+
+        txtEmail.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
+
+        txtTemperature.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtTemperature.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTemperatureKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTemperatureKeyTyped(evt);
+            }
+        });
+
+        genderGroup.add(btnMale);
+        btnMale.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnMale.setText("Male");
+        btnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleActionPerformed(evt);
+            }
+        });
+
+        txtBloodPressure.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtBloodPressure.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBloodPressureKeyReleased(evt);
+            }
+        });
+
+        txtName.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
+
+        lblTemperature.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblTemperature.setText("Temperature :");
+
+        genderGroup.add(btnOther);
+        btnOther.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnOther.setText("Other");
+        btnOther.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOtherActionPerformed(evt);
+            }
+        });
+
+        lblWeight.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblWeight.setText("Weight :");
+
+        lblName.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblName.setText("Patient Name :");
+
+        txtSugarLevel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtSugarLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSugarLevelKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSugarLevelKeyTyped(evt);
+            }
+        });
+
+        searchType.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        searchType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient ID" }));
+        searchType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTypeActionPerformed(evt);
+            }
+        });
+
+        txtWeight.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtWeightKeyReleased(evt);
+            }
+        });
+
+        lblAge.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblAge.setText("Age :");
+
+        lblSugarLevel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblSugarLevel.setText("Sugar Level :");
+
+        lblCommunity.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblCommunity.setText("Community :");
+
+        txtAge.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+
+        lblCity.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblCity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCity.setText("Hospital :");
+
+        lblGender.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblGender.setText("Gender :");
+
+        lblPhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblPhoneNumber.setText("Phone Number :");
+
+        lblHeading.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        lblHeading.setForeground(new java.awt.Color(0, 0, 204));
+        lblHeading.setText("        Patient Profile");
+
+        searchBtn.setBackground(new java.awt.Color(0, 255, 255));
+        searchBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        searchBtn.setText("Search");
+        searchBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        genderGroup.add(btnFemale);
+        btnFemale.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
+
+        tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Patient Id", "Encounter", "Temperature", "Blood Pressure", "Sugar Level", "Weight"
+            }
+        ));
+        jScrollPane1.setViewportView(tblEmployee);
+
+        txtPatientID.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtPatientID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPatientIDActionPerformed(evt);
+            }
+        });
+        txtPatientID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPatientIDKeyReleased(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("+1");
+
+        jLabel21.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel21.setText("Encounter History");
+
+        lblEmail.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblEmail.setText("Email :");
+
+        jButton7.setBackground(new java.awt.Color(204, 255, 204));
+        jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButton7.setText("View");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        txtPhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneNumberActionPerformed(evt);
+            }
+        });
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyReleased(evt);
+            }
+        });
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        lblCity1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblCity1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCity1.setText("City :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblSugarLevel)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(txtSugarLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblBloodPressure)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblWeight)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblTemperature)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 1113, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7)
+                        .addGap(212, 212, 212))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblGender))
+                            .addComponent(lblPatientID)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(160, 160, 160)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtSearchValue, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnMale)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnFemale)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnOther))))
+                                .addComponent(lblName)
+                                .addComponent(searchType, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblEmail)
+                                            .addComponent(lblPhoneNumber))
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtEmail)
+                                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblAge)
+                                        .addGap(53, 53, 53)
+                                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(115, 115, 115)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblCommunity, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(53, 53, 53)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAddress)
+                                    .addComponent(comboCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(537, 537, 537)
+                        .addComponent(lblHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblHeading)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearchValue)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(searchType))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblName)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPatientID)
+                            .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblGender)
+                            .addComponent(btnMale)
+                            .addComponent(btnFemale)
+                            .addComponent(btnOther))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAge)
+                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmail)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAddress)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCommunity))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCity1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(comboCity, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCity))))
+                .addGap(44, 44, 44)
+                .addComponent(jLabel21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jButton7)))
+                .addGap(78, 78, 78)
+                .addComponent(lblName1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTemperature)
+                    .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBloodPressure))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSugarLevel)
+                    .addComponent(txtSugarLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWeight))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressKeyReleased
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+
+    }//GEN-LAST:event_txtEmailKeyReleased
+
+    private void txtTemperatureKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperatureKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTemperatureKeyReleased
+
+    private void txtTemperatureKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperatureKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTemperatureKeyTyped
+
+    private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
+
+    }//GEN-LAST:event_btnMaleActionPerformed
+
+    private void txtBloodPressureKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBloodPressureKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBloodPressureKeyReleased
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void btnOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtherActionPerformed
+
+    }//GEN-LAST:event_btnOtherActionPerformed
+
+    private void txtSugarLevelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSugarLevelKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugarLevelKeyReleased
+
+    private void txtSugarLevelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSugarLevelKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugarLevelKeyTyped
+
+    private void searchTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTypeActionPerformed
+
+    private void txtWeightKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtWeightKeyReleased
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+        System.out.println(phistory.getHistory().size());    
+        String patient_ID =txtSearchValue.getText();
+               Person personDetails = new Person();
+               boolean test = false;
+               for(Person pd:phistory.getHistory())
+               {
+                    if(String.valueOf(pd.getPatientId()).equals(patient_ID))
+                    {
+                            personDetails = pd;
+                            txtName.setText(personDetails.getName());
+                            txtPatientID.setText(String.valueOf(personDetails.getPatientId()));
+                            txtAge.setText(String.valueOf(personDetails.getAge()));
+                            if (personDetails.getGender().equals("Male"))
+                            {
+                                //genderGroup.setSelected((ButtonModel) btnMale, true);
+                                btnMale.setSelected(true);
+                                }
+                            else if (personDetails.getGender().equals("Female"))
+                            {
+                                //genderGroup.setSelected(btnF, true);
+                                btnFemale.setSelected(true);
+                                }
+                            else
+                            {
+                                btnOther.setSelected(true);
+                                }
+                
+                            txtPhoneNumber.setText(String.valueOf(personDetails.getNumber()));
+                            txtEmail.setText(personDetails.getEmail());
+                            txtAddress.setText(personDetails.getAddress());
+                            comboCity.setSelectedItem(personDetails.getCity());
+                            System.out.println(personDetails.getCity());    
+                            comboCommunity.setSelectedItem(personDetails.getCommunity());
+                            comboHospital.setSelectedItem(personDetails.getHospital());
+                            System.out.println(personDetails.getHospital());
+                            test = true;
+                            break;
+                
+                        }
+                   }
+        
+                                      
+
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+
+    }//GEN-LAST:event_btnFemaleActionPerformed
+
+    private void txtPatientIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPatientIDKeyReleased
+
+    }//GEN-LAST:event_txtPatientIDKeyReleased
+
+    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneNumberActionPerformed
+
+    private void txtPhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyReleased
+
+    }//GEN-LAST:event_txtPhoneNumberKeyReleased
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        MainJFrame mf = new MainJFrame();
+            //splitPane.setRightComponent(sa);
+            mf.setVisible(true);
+            
+            dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtPatientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientIDActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+    
+    private void loadComboBoxData(){
+        comboCity.removeAllItems();
+        comboCommunity.removeAllItems();
+        comboHospital.removeAllItems();
+        for(City city: SystemAdminJFrame.cityList){
+            comboCity.addItem(city.getCityName());
+        }
+        for(City city:SystemAdminJFrame.cityList){
+            comboCommunity.addItem(city.getCommunity());
+        }
+        for(City city:SystemAdminJFrame.cityList){
+            comboHospital.addItem(city.getHospital());
+        }
+        comboCity.setSelectedIndex(-1);
+        comboCommunity.setSelectedIndex(-1);
+        comboHospital.setSelectedIndex(-1); 
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -78,5 +684,47 @@ public class PatientJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JRadioButton btnFemale;
+    private javax.swing.JRadioButton btnMale;
+    private javax.swing.JRadioButton btnOther;
+    private javax.swing.JComboBox<String> comboCity;
+    private javax.swing.JComboBox<String> comboCommunity;
+    private javax.swing.JComboBox<String> comboHospital;
+    private javax.swing.ButtonGroup genderGroup;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblBloodPressure;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblCity1;
+    private javax.swing.JLabel lblCommunity;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblHeading;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblPatientID;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblSugarLevel;
+    private javax.swing.JLabel lblTemperature;
+    private javax.swing.JLabel lblWeight;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JComboBox<String> searchType;
+    private javax.swing.JTable tblEmployee;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtBloodPressure;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPatientID;
+    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtSearchValue;
+    private javax.swing.JTextField txtSugarLevel;
+    private javax.swing.JTextField txtTemperature;
+    private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 }

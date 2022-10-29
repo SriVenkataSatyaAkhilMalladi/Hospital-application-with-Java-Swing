@@ -4,34 +4,23 @@
  */
 package model;
 
-import java.util.Random;
-
-
 /**
  *
- * @author srivenkatasatyaakhilmalladi
+ * @author rithvik
  */
 public class Community {
-    public int communityID;
-    public String communityName;
-    public int pincode;
-    Random random = new Random();
+     private String communityName;
+   
+    private String cityName;
 
-    public int getCommunityID() {
-        communityID = random.nextInt(5000);
-        return communityID;
-    }
-
-    public void setCommunityID(int communityID) {
-        this.communityID = communityID;
-    }
     
-    public int getPincode() {
-        return pincode;
+     public Community() {
     }
 
-    public void setPincode(int pincode) {
-        this.pincode = pincode;
+    public Community(String communityName, String cityName) {
+        this.communityName = communityName;
+        
+        this.cityName = cityName;
     }
 
     public String getCommunityName() {
@@ -41,4 +30,14 @@ public class Community {
     public void setCommunityName(String communityName) {
         this.communityName = communityName;
     }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    
+    
 }
