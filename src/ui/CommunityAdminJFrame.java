@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import model.City;
 /**
  *
- * @author rithvik
+ * @author srivenkatasatyaakhilmalladi
  */
 public class CommunityAdminJFrame extends javax.swing.JFrame {
 

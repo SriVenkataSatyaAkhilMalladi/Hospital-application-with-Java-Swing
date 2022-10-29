@@ -6,7 +6,7 @@ package ui;
 
 /**
  *
- * @author rithvik
+ * @author srivenkatasatyaakhilmalladi
  */
 public class HospitalJFrame extends javax.swing.JFrame {
 

@@ -7,7 +7,7 @@ package model;
 import java.util.ArrayList;
 /**
  *
- * @author rithvik
+ * @author srivenkatasatyaakhilmalladi
  */
 public class PersonHistory {
     

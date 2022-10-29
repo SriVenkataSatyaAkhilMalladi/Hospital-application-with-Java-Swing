@@ -15,7 +15,7 @@ import model.PersonHistory;
 
 /**
  *
- * @author rithvik
+ * @author srivenkatasatyaakhilmalladi
  */
 public class PersonJFrame extends javax.swing.JFrame {
 
