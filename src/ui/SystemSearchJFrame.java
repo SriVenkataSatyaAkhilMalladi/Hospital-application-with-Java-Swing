@@ -4,17 +4,29 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.City;
+import model.Hospital;
+import model.Person;
+import model.PersonHistory;
+
 /**
  *
- * @author srivenkatasatyaakhilmalladi
+ * @author rithvik
  */
 public class SystemSearchJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form SystemSearchJFrame
      */
+    PersonHistory phistory;
+    
     public SystemSearchJFrame() {
         initComponents();
+        this.phistory = new PersonHistory();
+        populateTable();
+        loadComboBoxData();
     }
 
     /**
@@ -33,27 +45,27 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearchValue = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSearchVital = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblEmployee1 = new javax.swing.JTable();
+        tblPatient = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnUpdatePerson = new javax.swing.JButton();
+        btnDeletePerson = new javax.swing.JButton();
         jTextField8 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmployee = new javax.swing.JTable();
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnUpdateVital = new javax.swing.JButton();
+        btnDeleteVital = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
+        btnSearchPerson = new javax.swing.JButton();
         txtAddress = new javax.swing.JTextField();
         lblAddress = new javax.swing.JLabel();
         lblPatientID = new javax.swing.JLabel();
@@ -66,7 +78,7 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         lblCity = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
         lblPhoneNumber = new javax.swing.JLabel();
-        btnFemale = new javax.swing.JRadioButton();
+        btnOther = new javax.swing.JRadioButton();
         txtPatientID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -76,15 +88,19 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         lblCity1 = new javax.swing.JLabel();
         comboCommunity = new javax.swing.JComboBox<>();
         lblAge = new javax.swing.JLabel();
-        btnFemale1 = new javax.swing.JRadioButton();
+        btnFemale = new javax.swing.JRadioButton();
+        comboDoctor = new javax.swing.JComboBox<>();
+        lblCity2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel12.setText("Temperature :");
 
         jLabel13.setText("Blood Pressure :");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Search Patient Profile");
 
@@ -94,9 +110,9 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
 
         jLabel15.setText("Weight :");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchValueActionPerformed(evt);
             }
         });
 
@@ -106,46 +122,46 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton1.setText("Search Encounter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSearchVital.setBackground(new java.awt.Color(0, 255, 255));
+        btnSearchVital.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnSearchVital.setText("Search Encounter");
+        btnSearchVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSearchVitalActionPerformed(evt);
             }
         });
 
-        tblEmployee1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Patient Id", "Age", "Gender", "Address", "Community", "Cell No", "Email ID", "Hospital", "Doctor"
+                "Name", "Patient Id", "Age", "Gender", "Person Number", "Email", "Address", "City", "Community", "Hospital", "Doctor"
             }
         ));
-        jScrollPane2.setViewportView(tblEmployee1);
+        jScrollPane2.setViewportView(tblPatient);
 
         jLabel20.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel20.setText("Person Details");
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 204));
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton2.setText("Update");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdatePerson.setBackground(new java.awt.Color(0, 255, 255));
+        btnUpdatePerson.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnUpdatePerson.setText("Update");
+        btnUpdatePerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUpdatePersonActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 102, 102));
-        jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletePerson.setBackground(new java.awt.Color(0, 255, 255));
+        btnDeletePerson.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnDeletePerson.setText("Delete");
+        btnDeletePerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnDeletePersonActionPerformed(evt);
             }
         });
 
@@ -180,20 +196,21 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(153, 255, 204));
-        jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton5.setText("Update");
+        btnUpdateVital.setBackground(new java.awt.Color(51, 255, 255));
+        btnUpdateVital.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnUpdateVital.setText("Update");
 
-        jButton6.setBackground(new java.awt.Color(255, 102, 102));
-        jButton6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton6.setText("Delete");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteVital.setBackground(new java.awt.Color(51, 255, 255));
+        btnDeleteVital.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnDeleteVital.setText("Delete");
+        btnDeleteVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnDeleteVitalActionPerformed(evt);
             }
         });
 
         jLabel21.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 204));
         jLabel21.setText("Encounter History");
 
         jLabel17.setText("Encounter No :");
@@ -214,7 +231,12 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setText("Search");
+        btnSearchPerson.setText("Search");
+        btnSearchPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchPersonActionPerformed(evt);
+            }
+        });
 
         txtAddress.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -260,12 +282,12 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         lblPhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblPhoneNumber.setText("Phone Number :");
 
-        genderGroup.add(btnFemale);
-        btnFemale.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        btnFemale.setText("Other");
-        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+        genderGroup.add(btnOther);
+        btnOther.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnOther.setText("Other");
+        btnOther.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFemaleActionPerformed(evt);
+                btnOtherActionPerformed(evt);
             }
         });
 
@@ -314,14 +336,18 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         lblAge.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblAge.setText("Age :");
 
-        genderGroup.add(btnFemale1);
-        btnFemale1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        btnFemale1.setText("Female");
-        btnFemale1.addActionListener(new java.awt.event.ActionListener() {
+        genderGroup.add(btnFemale);
+        btnFemale.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFemale1ActionPerformed(evt);
+                btnFemaleActionPerformed(evt);
             }
         });
+
+        lblCity2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblCity2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCity2.setText("Doctor :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,9 +359,10 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(45, 45, 45)
-                        .addComponent(jButton2)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton3))
+                        .addComponent(btnUpdatePerson)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeletePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -352,38 +379,44 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnMale)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnFemale1))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblCommunity, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(lblCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(53, 53, 53))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblPhoneNumber)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtAddress)
-                                        .addComponent(comboCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(comboCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(comboHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(7, 7, 7)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnFemale))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(lblCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(lblCommunity, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(lblCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(53, 53, 53))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblPhoneNumber)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtAddress)
+                                            .addComponent(comboCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(9, 9, 9)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblCity2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(88, 88, 88)
+                                    .addComponent(comboDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(9, 9, 9))))
+                        .addGap(7, 7, 7)))
                 .addGap(1, 1, 1)
-                .addComponent(btnFemale)
+                .addComponent(btnOther)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,10 +429,10 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnSearchVital, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton5)
+                                    .addComponent(btnUpdateVital)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel12)
@@ -425,29 +458,30 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                                             .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(83, 83, 83)
-                                        .addComponent(jButton6))))
+                                        .addComponent(btnDeleteVital))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(214, 214, 214)))))
                 .addContainerGap(124, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSearchValue, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnSearchPerson)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(277, 277, 277))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(452, 452, 452)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(btnSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel21)))))
-                .addGap(277, 277, 277))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(452, 452, 452)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,7 +504,7 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSearchVital, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -489,24 +523,24 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel13)
                                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                            .addComponent(btnUpdateVital)
+                            .addComponent(btnDeleteVital))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearch))
+                            .addComponent(txtSearchValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSearchPerson))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
+                            .addComponent(btnDeletePerson)
                             .addComponent(jLabel20)
-                            .addComponent(jButton2))
+                            .addComponent(btnUpdatePerson))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
@@ -519,8 +553,8 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblGender)
                             .addComponent(btnMale)
-                            .addComponent(btnFemale)
-                            .addComponent(btnFemale1))
+                            .addComponent(btnOther)
+                            .addComponent(btnFemale))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -554,28 +588,47 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCity))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCity2)))))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchValueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtSearchValueActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSearchVitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchVitalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSearchVitalActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnDeletePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int selectedRowIndex = tblPatient.getSelectedRow();
+        
+        if (selectedRowIndex<0) {
+          JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
+          return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
+        Person selectedPerson = (Person) model.getValueAt(selectedRowIndex, 0);
+        //model.getValueAt(selectedRowIndex, 0);
+        phistory.deletePerson(selectedPerson);
+        
+        JOptionPane.showMessageDialog(this, "Patient Profile deleted.");
+        
+        populateTable();
+        
+    }//GEN-LAST:event_btnDeletePersonActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
@@ -589,9 +642,9 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnDeleteVitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteVitalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnDeleteVitalActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
         // TODO add your handling code here:
@@ -606,9 +659,33 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
             dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnUpdatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePersonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+       int selectedRowIndex = tblPatient.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
+        if (selectedRowIndex >= 0)
+        {
+        model.setValueAt(txtName.getText(), selectedRowIndex, 0);
+        model.setValueAt(txtPatientID.getText(), selectedRowIndex, 1);
+        model.setValueAt(txtAge.getText(), selectedRowIndex, 2);
+        String genderValue="";
+                if (btnMale.isSelected()) genderValue="Male";
+                else if (btnFemale.isSelected()) genderValue="Female";
+                else  genderValue="Other";
+            model.setValueAt(genderValue, selectedRowIndex, 3);
+        model.setValueAt(txtPhoneNumber.getText(), selectedRowIndex, 4);
+        model.setValueAt(txtEmail.getText(), selectedRowIndex, 5);
+        model.setValueAt(txtAddress.getText(), selectedRowIndex, 6);
+        model.setValueAt(comboCity.getSelectedItem(), selectedRowIndex, 7);
+        model.setValueAt(comboCommunity.getSelectedItem(), selectedRowIndex, 8);
+        model.setValueAt(comboHospital.getSelectedItem(), selectedRowIndex, 9);
+        model.setValueAt(comboDoctor.getSelectedItem(), selectedRowIndex, 10);
+        }
+        else{
+          JOptionPane.showMessageDialog(this, "Please Select a row to be updated.");
+        
+        }    
+    }//GEN-LAST:event_btnUpdatePersonActionPerformed
 
     private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
         // TODO add your handling code here:
@@ -619,12 +696,12 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailKeyReleased
 
     private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
-
+            gender= "Male";
     }//GEN-LAST:event_btnMaleActionPerformed
 
-    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
-
-    }//GEN-LAST:event_btnFemaleActionPerformed
+    private void btnOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtherActionPerformed
+        gender= "Other";
+    }//GEN-LAST:event_btnOtherActionPerformed
 
     private void txtPatientIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPatientIDKeyReleased
 
@@ -646,13 +723,112 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtPhoneNumberKeyReleased
 
-    private void btnFemale1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemale1ActionPerformed
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnFemale1ActionPerformed
+        gender= "Female";
+    }//GEN-LAST:event_btnFemaleActionPerformed
+
+    private void btnSearchPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchPersonActionPerformed
+        // TODO add your handling code here:
+        System.out.println(phistory.getHistory().size());    
+        String patient_ID =txtSearchValue.getText();
+               Person personDetails = new Person();
+               boolean test = false;
+               for(Person pd:phistory.getHistory())
+               {
+                    if(String.valueOf(pd.getPatientId()).equals(patient_ID))
+                    {
+                            personDetails = pd;
+                            txtName.setText(personDetails.getName());
+                            txtPatientID.setText(String.valueOf(personDetails.getPatientId()));
+                            txtAge.setText(String.valueOf(personDetails.getAge()));
+                            if (personDetails.getGender().equals("Male"))
+                            {
+                                //genderGroup.setSelected((ButtonModel) btnMale, true);
+                                btnMale.setSelected(true);
+                                }
+                            else if (personDetails.getGender().equals("Female"))
+                            {
+                                //genderGroup.setSelected(btnF, true);
+                                btnOther.setSelected(true);
+                                }
+                            else
+                            {
+                                btnOther.setSelected(true);
+                                }
+                
+                            txtPhoneNumber.setText(String.valueOf(personDetails.getNumber()));
+                            txtEmail.setText(personDetails.getEmail());
+                            txtAddress.setText(personDetails.getAddress());
+                            comboCity.setSelectedItem(personDetails.getCity());
+                            System.out.println(personDetails.getCity());    
+                            comboCommunity.setSelectedItem(personDetails.getCommunity());
+                            comboHospital.setSelectedItem(personDetails.getHospital());
+                            comboDoctor.setSelectedItem(personDetails.getDoctor());
+                            System.out.println(personDetails.getHospital());
+                            test = true;
+                            break;
+                
+                        }
+                   }
+        
+        //
+                                  
+    }//GEN-LAST:event_btnSearchPersonActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    private void loadComboBoxData(){
+        comboCity.removeAllItems();
+        comboCommunity.removeAllItems();
+        comboHospital.removeAllItems();
+        comboDoctor.removeAllItems();
+        for(City city: SystemAdminJFrame.cityList){
+            comboCity.addItem(city.getCityName());
+        }
+        for(City city:SystemAdminJFrame.cityList){
+            comboCommunity.addItem(city.getCommunity());
+        }
+        for(City city:SystemAdminJFrame.cityList){
+            comboHospital.addItem(city.getHospital());
+        }
+        for(Hospital hospital:HospitalJFrame.hospitalList){
+            comboDoctor.addItem(hospital.getHospital());
+        }
+        comboCity.setSelectedIndex(-1);
+        comboCommunity.setSelectedIndex(-1);
+        comboHospital.setSelectedIndex(-1); 
+        comboDoctor.setSelectedIndex(-1);
+    }
+    
+    private void populateTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
+        model.setRowCount(0);
+        
+        for (Person pd : phistory.getHistory()){
+          
+            Object[] row = new Object[11];
+            row[0] = pd.getName();
+            row[1] = pd.getPatientId();
+            row[2] = pd.getAge();
+            row[3] = pd.getGender();
+            row[4] = pd.getNumber();
+            row[5] = pd.getEmail();
+            row[6] = pd.getAddress();
+            row[7] = pd.getCity();
+            row[8] = pd.getCommunity();
+            row[9] = pd.getHospital();
+            row[10] = pd.getDoctor();
+            
+            model.addRow(row);
+            
+        
+            
+            
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -684,22 +860,23 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
             }
         });
     }
-
+private String gender;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDeletePerson;
+    private javax.swing.JButton btnDeleteVital;
     private javax.swing.JRadioButton btnFemale;
-    private javax.swing.JRadioButton btnFemale1;
     private javax.swing.JRadioButton btnMale;
-    private javax.swing.JButton btnSearch;
+    private javax.swing.JRadioButton btnOther;
+    private javax.swing.JButton btnSearchPerson;
+    private javax.swing.JButton btnSearchVital;
+    private javax.swing.JButton btnUpdatePerson;
+    private javax.swing.JButton btnUpdateVital;
     private javax.swing.JComboBox<String> comboCity;
     private javax.swing.JComboBox<String> comboCommunity;
+    private javax.swing.JComboBox<String> comboDoctor;
     private javax.swing.JComboBox<String> comboHospital;
     private javax.swing.ButtonGroup genderGroup;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -713,7 +890,6 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
@@ -723,6 +899,7 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCity1;
+    private javax.swing.JLabel lblCity2;
     private javax.swing.JLabel lblCommunity;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGender;
@@ -730,12 +907,13 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblPatientID;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JTable tblEmployee;
-    private javax.swing.JTable tblEmployee1;
+    private javax.swing.JTable tblPatient;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPatientID;
     private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtSearchValue;
     // End of variables declaration//GEN-END:variables
 }

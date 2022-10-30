@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import model.City;
+import model.Hospital;
 import model.Person;
 import model.PersonHistory;
 
@@ -358,6 +359,7 @@ public class PersonJFrame extends javax.swing.JFrame {
         String city=(String)comboCity.getSelectedItem();
         String community=(String)comboCommunity.getSelectedItem();
         String hospital=(String)comboHospital.getSelectedItem();
+        String doctor=(String)comboDoctor.getSelectedItem();
 
         Person pd = new Person();
         pd.setName(name);
@@ -370,6 +372,7 @@ public class PersonJFrame extends javax.swing.JFrame {
         pd.setCity(city);
         pd.setCommunity(community);
         pd.setHospital(hospital);
+        pd.setDoctor(doctor);
         
         PersonHistory.getHistory().add(pd);
         PersonHistory.getHistory();
@@ -390,8 +393,7 @@ public class PersonJFrame extends javax.swing.JFrame {
         comboCity.setSelectedIndex(-1);
         comboCommunity.setSelectedIndex(-1);
         comboHospital.setSelectedIndex(-1);
-        
-
+        comboDoctor.setSelectedIndex(-1);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
@@ -476,6 +478,7 @@ private void loadComboBoxData(){
         comboCity.removeAllItems();
         comboCommunity.removeAllItems();
         comboHospital.removeAllItems();
+        comboDoctor.removeAllItems();
         for(City city: SystemAdminJFrame.cityList){
             comboCity.addItem(city.getCityName());
         }
@@ -485,9 +488,13 @@ private void loadComboBoxData(){
         for(City city:SystemAdminJFrame.cityList){
             comboHospital.addItem(city.getHospital());
         }
+        for(Hospital hospital:HospitalJFrame.hospitalList){
+            comboDoctor.addItem(hospital.getHospital());
+        }
         comboCity.setSelectedIndex(-1);
         comboCommunity.setSelectedIndex(-1);
         comboHospital.setSelectedIndex(-1); 
+        comboDoctor.setSelectedIndex(-1);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

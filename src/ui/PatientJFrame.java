@@ -7,6 +7,7 @@ package ui;
 import model.City;
 import model.Person;
 import model.PersonHistory;
+import model.Hospital;
 
 /**
  *
@@ -634,6 +635,7 @@ public class PatientJFrame extends javax.swing.JFrame {
         comboCity.removeAllItems();
         comboCommunity.removeAllItems();
         comboHospital.removeAllItems();
+        comboDoctor.removeAllItems();
         for(City city: SystemAdminJFrame.cityList){
             comboCity.addItem(city.getCityName());
         }
@@ -643,9 +645,13 @@ public class PatientJFrame extends javax.swing.JFrame {
         for(City city:SystemAdminJFrame.cityList){
             comboHospital.addItem(city.getHospital());
         }
+        for(Hospital hospital:HospitalJFrame.hospitalList){
+            comboDoctor.addItem(hospital.getHospital());
+        }
         comboCity.setSelectedIndex(-1);
         comboCommunity.setSelectedIndex(-1);
         comboHospital.setSelectedIndex(-1); 
+        comboDoctor.setSelectedIndex(-1);
     }
     
     /**
