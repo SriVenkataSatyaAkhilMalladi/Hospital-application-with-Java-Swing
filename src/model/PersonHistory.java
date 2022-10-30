@@ -33,7 +33,7 @@ public class PersonHistory {
         
     }
     
-    public void deleteEmployee(Person pd){
+    public void deletePerson(Person pd){
         history.remove(pd);
         
     }
@@ -42,3 +42,4 @@ public class PersonHistory {
 //        return history;
 //    }
 }
+

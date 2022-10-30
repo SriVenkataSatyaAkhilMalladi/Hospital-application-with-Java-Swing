@@ -6,11 +6,29 @@ package model;
 
 /**
  *
- * @author rithvik
+ * @author srivenkatasatyaakhilmalladi
  */
 public class Hospital {
     private String hospital;
+    private String doctor;
+    
+    public Hospital(){}
+      public Hospital(String hospitalname,String doctorname)
+      {
+      this.hospital=hospitalname;
+      this.doctor=doctorname;
+      }
+      
+    public String getDoctor() {
+        return doctor;
+    }
 
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
+    
+    
+      
     public String getHospital() {
         return hospital;
     }

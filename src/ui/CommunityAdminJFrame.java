@@ -9,6 +9,7 @@ import model.Person;
 import model.PersonHistory;
 import javax.swing.table.DefaultTableModel;
 import model.City;
+import model.Hospital;
 /**
  *
  * @author srivenkatasatyaakhilmalladi

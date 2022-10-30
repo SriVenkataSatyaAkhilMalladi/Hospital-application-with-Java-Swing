@@ -20,8 +20,9 @@ public class Person {
     private String community;
     private String address;
     private String hospital;
+    private String doctor;
     
-    public Person(String name, String patientId, int age, String gender, String phoneNumber, String email, String address, String city, String community, String hospital) 
+    public Person(String name, String patientId, int age, String gender, String phoneNumber, String email, String address, String city, String community, String hospital, String doctor) 
     {
         this.name = name;
         this.patientId = patientId;
@@ -33,6 +34,15 @@ public class Person {
         this.city = city;
         this.community = community;
         this.hospital = hospital;
+        this.doctor = doctor;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
     
     public Person(){}
