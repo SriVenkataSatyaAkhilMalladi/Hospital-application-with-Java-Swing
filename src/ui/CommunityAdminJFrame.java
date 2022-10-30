@@ -548,7 +548,7 @@ public class CommunityAdminJFrame extends javax.swing.JFrame {
             comboHospital.addItem(city.getHospital());
         }
         for(Hospital hospital:HospitalJFrame.hospitalList){
-            comboDoctor.addItem(hospital.getHospital());
+            comboDoctor.addItem(hospital.getDoctor());
         }        
         comboCity.setSelectedIndex(-1);
         comboCommunity.setSelectedIndex(-1);
@@ -563,7 +563,7 @@ public class CommunityAdminJFrame extends javax.swing.JFrame {
         
         for (Person pd : phistory.getHistory()){
           
-            Object[] row = new Object[10];
+            Object[] row = new Object[11];
             row[0] = pd.getName();
             row[1] = pd.getPatientId();
             row[2] = pd.getAge();

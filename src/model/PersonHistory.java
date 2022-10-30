@@ -21,9 +21,9 @@ public class PersonHistory {
         return history;
     }
 
-//    public void setHistory(ArrayList<Person> history) {
-//        this.history = history;
-//    }
+  public void setHistory(ArrayList<Person> history) {
+        this.history = history;
+    }
     
     public Person addNewPerson(){
       
@@ -42,4 +42,3 @@ public class PersonHistory {
 //        return history;
 //    }
 }
-

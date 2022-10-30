@@ -4,11 +4,16 @@
  */
 package ui;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
 import model.Hospital;
 import model.Person;
+import model.VitalSign;
 import model.PersonHistory;
+import model.VitalSignHistory;
+import static ui.SystemAdminJFrame.cityList;
 
 /**
  *
@@ -20,9 +25,11 @@ public class DoctorJFrame extends javax.swing.JFrame {
      * Creates new form DoctorJFrame
      */
     PersonHistory phistory;
+    VitalSignHistory vhistory;
     public DoctorJFrame() {
         initComponents();
         this.phistory = new PersonHistory();
+        this.vhistory = new VitalSignHistory();
         populateTable();
         loadComboBoxData();
     }
@@ -66,6 +73,7 @@ public class DoctorJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton2.setBackground(new java.awt.Color(0, 255, 255));
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +101,7 @@ public class DoctorJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(0, 255, 255));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +136,7 @@ public class DoctorJFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel8.setText("Vital Signs");
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton1.setBackground(new java.awt.Color(0, 255, 255));
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +161,8 @@ public class DoctorJFrame extends javax.swing.JFrame {
 
         jLabel7.setText("Hospital name :");
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Doctor Panel");
 
@@ -178,15 +188,6 @@ public class DoctorJFrame extends javax.swing.JFrame {
                     .addComponent(comboHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTemperature, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(txtBloodPressure)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -194,19 +195,23 @@ public class DoctorJFrame extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtSugarLevel, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(txtWeight))))
+                            .addComponent(txtWeight)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTemperature, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                            .addComponent(txtBloodPressure))))
                 .addGap(574, 574, 574))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(510, 510, 510)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(375, 375, 375)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,13 +221,18 @@ public class DoctorJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtSearchValue, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnSearch))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jButton1))
+                                .addComponent(btnSearch))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(225, 225, 225)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -259,8 +269,11 @@ public class DoctorJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(txtEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton1))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addContainerGap(125, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,16 +290,17 @@ public class DoctorJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
-                        .addGap(102, 102, 102)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,6 +338,36 @@ public class DoctorJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String hospitalName = (String)comboHospital.getSelectedItem();
+        String doctorName = (String)comboDoctor.getSelectedItem();
+        String patientID = txtPatientID.getText();
+        String encounterNO = txtEncounter.getText();
+        Double bp = Double.parseDouble(txtBloodPressure.getText());
+        Double sugar = Double.parseDouble(txtSugarLevel.getText());
+        Double temperature = Double.parseDouble(txtTemperature.getText());
+        Double weight = Double.parseDouble(txtWeight.getText());
+        
+        VitalSign vs = new VitalSign();
+        vs.setHospitalName(hospitalName);
+        vs.setDoctorName(doctorName);
+        vs.setPatientID(patientID);
+        vs.setEncounterNO(encounterNO);
+        vs.setBp(bp);
+        vs.setSugar(sugar);
+        vs.setTemperature(temperature);
+        vs.setWeight(weight);
+        
+        VitalSignHistory.getVitalList().add(vs);
+        VitalSignHistory.getVitalList();
+        
+        JOptionPane.showMessageDialog(this ,"Patient Vital Signs created");
+        
+        txtEncounter.setText("");
+        txtBloodPressure.setText("");
+        txtSugarLevel.setText("");
+        txtTemperature.setText("");
+        txtWeight.setText("");
+           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSearchValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchValueActionPerformed
@@ -387,7 +431,7 @@ public class DoctorJFrame extends javax.swing.JFrame {
             
             row[0] = pd.getPatientId();
             row[1] = pd.getHospital();
-            row[2] = pd.getHospital();
+            row[2] = pd.getDoctor();
             
             model.addRow(row);
             
