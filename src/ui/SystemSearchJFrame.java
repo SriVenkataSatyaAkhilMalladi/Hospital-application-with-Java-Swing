@@ -165,6 +165,11 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         btnUpdateVital.setBackground(new java.awt.Color(51, 255, 255));
         btnUpdateVital.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         btnUpdateVital.setText("Update");
+        btnUpdateVital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateVitalActionPerformed(evt);
+            }
+        });
 
         btnDeleteVital.setBackground(new java.awt.Color(51, 255, 255));
         btnDeleteVital.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -637,7 +642,6 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
 
     private void btnSearchVitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchVitalActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
         String Encounter =txtSearchEncounter.getText();
                VitalSign vitalSign = new VitalSign();
                boolean test = false;
@@ -672,18 +676,73 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         }
         
         DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
-        Person selectedPerson = (Person) model.getValueAt(selectedRowIndex, 0);
+        String PatientID  = (String) model.getValueAt(selectedRowIndex, 1);
         //model.getValueAt(selectedRowIndex, 0);
-        phistory.deletePerson(selectedPerson);
+        Person tempPerson = null;
+        for(Person pd:phistory.getHistory())
+               {
+           
+                    if(String.valueOf(pd.getPatientId()).equals(PatientID))
+                    {
+                        tempPerson = pd;
+                        break;
+                    }
+               
+                    }
+        phistory.deletePerson(tempPerson);
         
         JOptionPane.showMessageDialog(this, "Patient Profile deleted.");
         
         populateTable();
+        model.setRowCount(-1);
+        comboHos.setSelectedIndex(-1); 
+        comboDoc.setSelectedIndex(-1);
+        txtEncounter.setText("");
+        txtTemperature.setText("");
+        txtBloodPressure.setText("");
+        txtSugarLevel.setText("");
+        txtWeight.setText("");
+        txtSearchEncounter.setText("");
+        
+                   
+        
         
     }//GEN-LAST:event_btnDeletePersonActionPerformed
 
     private void btnDeleteVitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteVitalActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblVitalSign.getSelectedRow();
+        
+        if (selectedRowIndex<0) {
+          JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
+          return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
+        String PatientID  = (String) model.getValueAt(selectedRowIndex, 2);
+        //model.getValueAt(selectedRowIndex, 0);
+        VitalSign tempVital = null;
+        for(VitalSign vs:vhistory.getVitalList())
+               {
+           
+                    if(String.valueOf(vs.getPatientID()).equals(PatientID))
+                    {
+                        tempVital = vs;
+                        break;
+                    }
+               
+                    }
+        vhistory.deleteVitalSign(tempVital);
+        
+        JOptionPane.showMessageDialog(this, "Vital Sign deleted.");
+        comboHos.setSelectedIndex(-1); 
+        comboDoc.setSelectedIndex(-1);
+        txtEncounter.setText("");
+        txtTemperature.setText("");
+        txtBloodPressure.setText("");
+        txtSugarLevel.setText("");
+        txtWeight.setText("");
+        txtSearchEncounter.setText("");        
     }//GEN-LAST:event_btnDeleteVitalActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -714,8 +773,6 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         model.setValueAt(txtAddress.getText(), selectedRowIndex, 6);
         model.setValueAt(comboCity.getSelectedItem(), selectedRowIndex, 7);
         model.setValueAt(comboCommunity.getSelectedItem(), selectedRowIndex, 8);
-        model.setValueAt(comboHospital.getSelectedItem(), selectedRowIndex, 9);
-        model.setValueAt(comboDoctor.getSelectedItem(), selectedRowIndex, 10);
         }
         else{
           JOptionPane.showMessageDialog(this, "Please Select a row to be updated.");
@@ -799,8 +856,7 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
                             comboCity.setSelectedItem(personDetails.getCity());
                             System.out.println(personDetails.getCity());    
                             comboCommunity.setSelectedItem(personDetails.getCommunity());
-                            comboHospital.setSelectedItem(personDetails.getHospital());
-                            comboDoctor.setSelectedItem(personDetails.getDoctor());
+                            popTable();
                             System.out.println(personDetails.getHospital());
                             test = true;
                             break;
@@ -836,36 +892,88 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTemperatureActionPerformed
 
+    private void btnUpdateVitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateVitalActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblVitalSign.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
+        if (selectedRowIndex >= 0)
+        {
+        
+        model.setValueAt(comboHos.getSelectedItem(), selectedRowIndex, 0);
+        model.setValueAt(comboDoc.getSelectedItem(), selectedRowIndex, 1);
+        model.setValueAt(txtEncounter.getText(), selectedRowIndex, 3);
+        model.setValueAt(txtTemperature.getText(), selectedRowIndex, 4);
+        model.setValueAt(txtBloodPressure.getText(), selectedRowIndex, 5);
+        model.setValueAt(txtSugarLevel.getText(), selectedRowIndex, 6);
+        model.setValueAt(txtWeight.getText(), selectedRowIndex, 7);
+        
+        }
+        else{
+          JOptionPane.showMessageDialog(this, "Please Select a row to be updated.");
+        
+        }         
+    }//GEN-LAST:event_btnUpdateVitalActionPerformed
+
     /**
      * @param args the command line arguments
      */
     private void loadComboBoxData(){
         comboCity.removeAllItems();
         comboCommunity.removeAllItems();
-        comboHospital.removeAllItems();
-        comboDoctor.removeAllItems();
+        comboHos.removeAllItems();
+        comboDoc.removeAllItems();
         for(City city: SystemAdminJFrame.cityList){
             comboCity.addItem(city.getCityName());
         }
         for(City city:SystemAdminJFrame.cityList){
             comboCommunity.addItem(city.getCommunity());
         }
-        for(City city:SystemAdminJFrame.cityList){
-            comboHospital.addItem(city.getHospital());
+        for(VitalSign vitalSign:VitalSignHistory.getVitalList()){
+            comboHos.addItem(vitalSign.getHospitalName());
         }
-        for(Hospital hospital:HospitalJFrame.hospitalList){
-            comboDoctor.addItem(hospital.getHospital());
+        for(VitalSign vitalSign:VitalSignHistory.getVitalList()){
+            comboDoc.addItem(vitalSign.getDoctorName());
         }
         comboCity.setSelectedIndex(-1);
         comboCommunity.setSelectedIndex(-1);
-        comboHospital.setSelectedIndex(-1); 
-        comboDoctor.setSelectedIndex(-1);
+        comboHos.setSelectedIndex(-1); 
+        comboDoc.setSelectedIndex(-1);
     }
+    
+    private  void popTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
+        model.setRowCount(0);
+        String patient_ID =txtSearchValue.getText();
+        
+        for (VitalSign vs : vhistory.getVitalList())
+        {
+            
+                if(String.valueOf(vs.getPatientID()).equals(patient_ID))
+                    {
+                        Object[] row = new Object[8];
+                        row[0] = vs.getHospitalName();
+                        row[1] = vs.getDoctorName();
+                        row[2] = vs.getPatientID();
+                        row[3] = vs.getEncounterNO();
+                        row[4] = vs.getTemperature();
+                        row[5] = vs.getBp();
+                        row[6] = vs.getSugar();
+                        row[7] = vs.getWeight();
+
+
+                        model.addRow(row);
+                    }
+        
+            
+            
+        }
+    }    
     
     private void populateTable() {
         
-        DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
-        model.setRowCount(0);
+        DefaultTableModel model1 = (DefaultTableModel) tblPatient.getModel();
+        model1.setRowCount(0);
         
         for (Person pd : phistory.getHistory()){
           
@@ -882,11 +990,11 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
             row[9] = pd.getHospital();
             row[10] = pd.getDoctor();
             
-            model.addRow(row);
+            model1.addRow(row);
             
         
             
-            
+          
         }
     }
     public static void main(String args[]) {
