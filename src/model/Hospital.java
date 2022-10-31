@@ -7,6 +7,7 @@ package model;
 /**
  *
  * @author srivenkatasatyaakhilmalladi
+ * 
  */
 public class Hospital {
     private String hospital;

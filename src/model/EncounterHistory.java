@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  *
  * @author srivenkatasatyaakhilmalladi
+ * 
  */
 public class EncounterHistory {
     
