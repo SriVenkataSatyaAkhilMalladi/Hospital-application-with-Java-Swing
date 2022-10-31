@@ -413,7 +413,7 @@ public class DoctorJFrame extends javax.swing.JFrame {
             comboHospital.addItem(city.getHospital());
         }
         for(Hospital hospital:HospitalJFrame.hospitalList){
-            comboDoctor.addItem(hospital.getHospital());
+            comboDoctor.addItem(hospital.getDoctor());
         }
     
         comboHospital.setSelectedIndex(-1); 
