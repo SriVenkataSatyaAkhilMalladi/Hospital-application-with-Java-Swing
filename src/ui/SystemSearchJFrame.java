@@ -674,8 +674,8 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
           return;
         }
-        
-        DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) tblPatient.getModel();
         String PatientID  = (String) model.getValueAt(selectedRowIndex, 1);
         //model.getValueAt(selectedRowIndex, 0);
         Person tempPerson = null;
@@ -757,22 +757,22 @@ public class SystemSearchJFrame extends javax.swing.JFrame {
     private void btnUpdatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePersonActionPerformed
         // TODO add your handling code here:
        int selectedRowIndex = tblPatient.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) tblPatient.getModel();
         if (selectedRowIndex >= 0)
         {
-        model.setValueAt(txtName.getText(), selectedRowIndex, 0);
-        model.setValueAt(txtPatientID.getText(), selectedRowIndex, 1);
-        model.setValueAt(txtAge.getText(), selectedRowIndex, 2);
+        model1.setValueAt(txtName.getText(), selectedRowIndex, 0);
+        model1.setValueAt(txtPatientID.getText(), selectedRowIndex, 1);
+        model1.setValueAt(txtAge.getText(), selectedRowIndex, 2);
         String genderValue="";
                 if (btnMale.isSelected()) genderValue="Male";
                 else if (btnFemale.isSelected()) genderValue="Female";
                 else  genderValue="Other";
-            model.setValueAt(genderValue, selectedRowIndex, 3);
-        model.setValueAt(txtPhoneNumber.getText(), selectedRowIndex, 4);
-        model.setValueAt(txtEmail.getText(), selectedRowIndex, 5);
-        model.setValueAt(txtAddress.getText(), selectedRowIndex, 6);
-        model.setValueAt(comboCity.getSelectedItem(), selectedRowIndex, 7);
-        model.setValueAt(comboCommunity.getSelectedItem(), selectedRowIndex, 8);
+            model1.setValueAt(genderValue, selectedRowIndex, 3);
+        model1.setValueAt(txtPhoneNumber.getText(), selectedRowIndex, 4);
+        model1.setValueAt(txtEmail.getText(), selectedRowIndex, 5);
+        model1.setValueAt(txtAddress.getText(), selectedRowIndex, 6);
+        model1.setValueAt(comboCity.getSelectedItem(), selectedRowIndex, 7);
+        model1.setValueAt(comboCommunity.getSelectedItem(), selectedRowIndex, 8);
         }
         else{
           JOptionPane.showMessageDialog(this, "Please Select a row to be updated.");
