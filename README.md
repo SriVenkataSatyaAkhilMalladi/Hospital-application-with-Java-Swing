@@ -1,5 +1,4 @@
-# Malladi_SriVenkataSatyaAkhil_2766590
-
+# Hospital application with Java Swing.
 
 
 The employee profile will have following fields : 
